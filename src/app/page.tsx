@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { LatestPost } from "~/app/_components/post";
@@ -14,14 +15,16 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+      <main className="flex min-h-screen flex-col items-center justify-center bg-gray-50 text-gray-900">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Trail<span className="text-[hsl(280,100%,70%)]">Tale</span>
+          <h1 className="text-5xl font-extrabold tracking-tight text-green-600 sm:text-[5rem]">
+            <Image src="/public/logo.png" alt="Logo" width={100} height={100} />
+            Trail
+            <span className="text-green-800">Tale</span>
           </h1>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
             <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+              className="flex max-w-xs flex-col gap-4 rounded-xl bg-green-600 p-4 text-white hover:bg-green-500"
               href="/discover"
             >
               <h3 className="text-2xl font-bold">Discover Trails →</h3>
@@ -31,7 +34,7 @@ export default async function Home() {
               </div>
             </Link>
             <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
+              className="flex max-w-xs flex-col gap-4 rounded-xl bg-amber-200 p-4 text-green-800 hover:bg-amber-100"
               href="/create"
             >
               <h3 className="text-2xl font-bold">Create Guide →</h3>
@@ -42,17 +45,17 @@ export default async function Home() {
             </Link>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
+            <p className="text-2xl text-green-800">
               {hello ? hello.greeting : "Loading your trail guides..."}
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4">
-              <p className="text-center text-2xl text-white">
+              <p className="text-center text-2xl text-green-600">
                 {session && <span>Welcome back, {session.user?.name}</span>}
               </p>
               <Link
                 href={session ? "/api/auth/signout" : "/api/auth/signin"}
-                className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
+                className="rounded-full bg-green-600 px-10 py-3 font-semibold text-white no-underline transition hover:bg-green-500"
               >
                 <div className="flex items-center gap-2">
                   {session ? (
